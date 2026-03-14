@@ -1,0 +1,12 @@
+{
+  "variants": {
+    "active=false,facing=north": { "model": "myatm:block/terminal" },
+    "active=false,facing=south": { "model": "myatm:block/terminal", "y": 180 },
+    "active=false,facing=west":  { "model": "myatm:block/terminal", "y": 270 },
+    "active=false,facing=east":  { "model": "myatm:block/terminal", "y": 90 },
+    "active=true,facing=north":  { "model": "myatm:block/terminal_active" },
+    "active=true,facing=south":  { "model": "myatm:block/terminal_active", "y": 180 },
+    "active=true,facing=west":   { "model": "myatm:block/terminal_active", "y": 270 },
+    "active=true,facing=east":   { "model": "myatm:block/terminal_active", "y": 90 }
+  }
+}

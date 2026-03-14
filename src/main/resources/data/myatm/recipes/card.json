@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "IGI",
+    "PPP"
+  ],
+  "key": {
+    "I": { "item": "minecraft:iron_ingot" },
+    "G": { "item": "minecraft:gold_nugget" },
+    "P": { "item": "minecraft:paper" }
+  },
+  "result": {
+    "item": "myatm:card",
+    "count": 1
+  }
+}

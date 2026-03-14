@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "IPI",
+    "IRI",
+    "IGI"
+  ],
+  "key": {
+    "I": { "item": "minecraft:iron_ingot" },
+    "P": { "item": "minecraft:glass_pane" },
+    "R": { "item": "minecraft:redstone" },
+    "G": { "item": "minecraft:gold_ingot" }
+  },
+  "result": {
+    "item": "myatm:atm",
+    "count": 1
+  }
+}

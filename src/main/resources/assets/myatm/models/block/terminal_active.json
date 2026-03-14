@@ -1,0 +1,12 @@
+{
+  "parent": "minecraft:block/cube",
+  "textures": {
+    "down":     "myatm:block/terminal_side",
+    "up":       "myatm:block/terminal_top",
+    "north":    "myatm:block/terminal_front_active",
+    "south":    "myatm:block/terminal_side",
+    "west":     "myatm:block/terminal_side",
+    "east":     "myatm:block/terminal_side",
+    "particle": "myatm:block/terminal_side"
+  }
+}

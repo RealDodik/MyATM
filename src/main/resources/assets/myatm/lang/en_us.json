@@ -1,0 +1,9 @@
+{
+  "block.myatm.atm": "ATM",
+  "block.myatm.terminal": "Payment Terminal",
+  "item.myatm.atm": "ATM",
+  "item.myatm.terminal": "Payment Terminal",
+  "item.myatm.card": "Bank Card",
+  "container.myatm.atm": "ATM",
+  "container.myatm.terminal": "Payment Terminal"
+}

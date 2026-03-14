@@ -1,0 +1,12 @@
+{
+  "parent": "minecraft:block/cube",
+  "textures": {
+    "down":     "myatm:block/atm_side",
+    "up":       "myatm:block/atm_top",
+    "north":    "myatm:block/atm_front",
+    "south":    "myatm:block/atm_side",
+    "west":     "myatm:block/atm_side",
+    "east":     "myatm:block/atm_side",
+    "particle": "myatm:block/atm_side"
+  }
+}
