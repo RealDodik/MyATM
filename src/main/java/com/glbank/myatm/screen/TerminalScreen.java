@@ -49,13 +49,15 @@ public class TerminalScreen extends AbstractContainerScreen<TerminalMenu> {
         int x = this.leftPos;
         int y = this.topPos;
 
-        amountField = new EditBox(this.font, x + 10, y + 12, 100, 12,
+        // Поле суми
+        amountField = new EditBox(this.font, x + 10, y + 30, 80, 12,
                 Component.literal("Amount"));
         amountField.setMaxLength(10);
         amountField.setHint(Component.literal("Amount (DC)"));
         addRenderableWidget(amountField);
 
-        pinField = new EditBox(this.font, x + 10, y + 30, 100, 12,
+        // Поле PIN
+        pinField = new EditBox(this.font, x + 10, y + 48, 80, 12,
                 Component.literal("PIN"));
         pinField.setMaxLength(8);
         pinField.setHint(Component.literal("PIN"));
@@ -65,8 +67,9 @@ public class TerminalScreen extends AbstractContainerScreen<TerminalMenu> {
                         net.minecraft.network.chat.Style.EMPTY));
         addRenderableWidget(pinField);
 
+        // Кнопка Pay
         payButton = Button.builder(Component.literal("Pay"), btn -> sendPayment())
-                .pos(x + 96, y + 35)
+                .pos(x + 96, y + 53)
                 .size(70, 18)
                 .build();
         addRenderableWidget(payButton);
@@ -104,6 +107,7 @@ public class TerminalScreen extends AbstractContainerScreen<TerminalMenu> {
         );
     }
 
+    /** Викликається з TerminalResponsePacket.handle() */
     public void handleResponse(TerminalResponsePacket pkt) {
         waiting = false;
         if (payButton != null) payButton.active = true;
@@ -126,8 +130,9 @@ public class TerminalScreen extends AbstractContainerScreen<TerminalMenu> {
 
     @Override
     public boolean keyPressed(int keyCode, int scanCode, int modifiers) {
+        // Если фокус на поле ввода — не закрываем GUI по E/инвентарю
         if (amountField.isFocused() || pinField.isFocused()) {
-            if (keyCode == 256) {
+            if (keyCode == 256) { // ESC — закрываем
                 this.onClose();
                 return true;
             }
@@ -153,11 +158,13 @@ public class TerminalScreen extends AbstractContainerScreen<TerminalMenu> {
         int x = leftPos;
         int y = topPos;
 
+        // Назва/рахунок (з імені термінала)
         String[] nameParts = menu.blockEntity.parseTerminalName();
         if (nameParts != null) {
             graphics.drawString(font, "To: " + nameParts[0] + " #" + nameParts[1], x + 10, y + 8, 0x606060, false);
         }
 
+        // Статус
         if (!statusLine.isEmpty()) {
             graphics.drawString(font, statusLine, x + 10, y + 85, statusColor, false);
         }
