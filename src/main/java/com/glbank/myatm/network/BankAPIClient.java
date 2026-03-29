@@ -16,13 +16,13 @@ public class BankAPIClient {
             .build();
     private static final Gson GSON = new Gson();
 
-    public static class ATMResult {
+    public static class CardLinkerResult {
         public final boolean success;
         public final String cardNumber;
         public final String cvv;
         public final String message;
 
-        public ATMResult(boolean success, String cardNumber, String cvv, String message) {
+        public CardLinkerResult(boolean success, String cardNumber, String cvv, String message) {
             this.success = success;
             this.cardNumber = cardNumber;
             this.cvv = cvv;
@@ -40,17 +40,17 @@ public class BankAPIClient {
         }
     }
 
-    public static ATMResult atmRequest(String baseUrl, String apiPassword,
+    public static CardLinkerResult cardLinkerRequest(String baseUrl, String apiPassword,
                                        String login, String password, String pin) {
         try {
             JsonObject body = new JsonObject();
             body.addProperty("api_password", apiPassword);
-            body.addProperty("type", "ATM");
+            body.addProperty("type", "CARD_LINKER");
             body.addProperty("login", login);
             body.addProperty("password", password);
             body.addProperty("pin", pin);
 
-            String responseBody = post(baseUrl.replaceAll("/$", "") + "/api/atm", body.toString());
+            String responseBody = post(baseUrl.replaceAll("/$", "") + "/api/card_linker", body.toString());
             JsonObject json = GSON.fromJson(responseBody, JsonObject.class);
 
             boolean success = json.has("success") && json.get("success").getAsBoolean();
@@ -58,10 +58,10 @@ public class BankAPIClient {
             String cvv = success && json.has("cvv") ? json.get("cvv").getAsString() : "";
             String message = json.has("message") ? json.get("message").getAsString() : "";
 
-            return new ATMResult(success, cardNumber, cvv, message);
+            return new CardLinkerResult(success, cardNumber, cvv, message);
 
         } catch (Exception e) {
-            return new ATMResult(false, "", "", "Connection error: " + e.getMessage());
+            return new CardLinkerResult(false, "", "", "Connection error: " + e.getMessage());
         }
     }
 

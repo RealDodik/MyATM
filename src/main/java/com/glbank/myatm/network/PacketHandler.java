@@ -18,16 +18,14 @@ public class PacketHandler {
     private static int id = 0;
 
     public static void register() {
-        // Client → Server
-        CHANNEL.registerMessage(id++, ATMRequestPacket.class,
-                ATMRequestPacket::encode, ATMRequestPacket::decode, ATMRequestPacket::handle);
+        CHANNEL.registerMessage(id++, CardLinkerRequestPacket.class,
+                CardLinkerRequestPacket::encode, CardLinkerRequestPacket::decode, CardLinkerRequestPacket::handle);
 
         CHANNEL.registerMessage(id++, TerminalRequestPacket.class,
                 TerminalRequestPacket::encode, TerminalRequestPacket::decode, TerminalRequestPacket::handle);
 
-        // Server → Client
-        CHANNEL.registerMessage(id++, ATMResponsePacket.class,
-                ATMResponsePacket::encode, ATMResponsePacket::decode, ATMResponsePacket::handle);
+        CHANNEL.registerMessage(id++, CardLinkerResponsePacket.class,
+                CardLinkerResponsePacket::encode, CardLinkerResponsePacket::decode, CardLinkerResponsePacket::handle);
 
         CHANNEL.registerMessage(id++, TerminalResponsePacket.class,
                 TerminalResponsePacket::encode, TerminalResponsePacket::decode, TerminalResponsePacket::handle);

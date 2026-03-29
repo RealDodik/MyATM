@@ -17,9 +17,9 @@ public class ModCreativeTabs {
             CREATIVE_TABS.register("myatm_tab", () ->
                     CreativeModeTab.builder()
                             .title(Component.translatable("itemGroup.myatm"))
-                            .icon(() -> new ItemStack(ModItems.ATM_ITEM.get()))
+                            .icon(() -> new ItemStack(ModItems.CARD_LINKER_ITEM.get()))
                             .displayItems((params, output) -> {
-                                output.accept(ModItems.ATM_ITEM.get());
+                                output.accept(ModItems.CARD_LINKER_ITEM.get());
                                 output.accept(ModItems.TERMINAL_ITEM.get());
                                 output.accept(ModItems.CARD.get());
                             })

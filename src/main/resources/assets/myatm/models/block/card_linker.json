@@ -1,0 +1,12 @@
+{
+  "parent": "minecraft:block/cube",
+  "textures": {
+    "down":     "myatm:block/card_linker_side",
+    "up":       "myatm:block/card_linker_top",
+    "north":    "myatm:block/card_linker_front",
+    "south":    "myatm:block/card_linker_side",
+    "west":     "myatm:block/card_linker_side",
+    "east":     "myatm:block/card_linker_side",
+    "particle": "myatm:block/card_linker_side"
+  }
+}

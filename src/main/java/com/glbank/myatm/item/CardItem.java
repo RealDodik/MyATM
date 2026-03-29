@@ -33,7 +33,7 @@ public class CardItem extends Item {
                 tooltip.add(Component.literal("§7CVV: §f" + tag.getString("CVV")));
             }
         } else {
-            tooltip.add(Component.literal("§8[blank card — use ATM]"));
+            tooltip.add(Component.literal("§8[blank card — use Card Linker]"));
         }
     }
 

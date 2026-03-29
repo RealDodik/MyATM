@@ -1,6 +1,6 @@
 package com.glbank.myatm.menu;
 
-import com.glbank.myatm.blockentity.TerminalBlockEntity;
+import com.glbank.myatm.blockentity.CardLinkerBlockEntity;
 import com.glbank.myatm.item.CardItem;
 import com.glbank.myatm.setup.ModMenuTypes;
 import net.minecraft.network.FriendlyByteBuf;
@@ -14,20 +14,20 @@ import org.jetbrains.annotations.NotNull;
 
 import java.util.UUID;
 
-public class TerminalMenu extends AbstractContainerMenu {
+public class CardLinkerMenu extends AbstractContainerMenu {
 
-    public final TerminalBlockEntity blockEntity;
+    public final CardLinkerBlockEntity blockEntity;
     public final UUID playerId;
 
-    public TerminalMenu(int containerId, Inventory playerInventory, FriendlyByteBuf buf) {
+    public CardLinkerMenu(int containerId, Inventory playerInventory, FriendlyByteBuf buf) {
         this(containerId, playerInventory,
-                (TerminalBlockEntity) playerInventory.player.level()
+                (CardLinkerBlockEntity) playerInventory.player.level()
                         .getBlockEntity(buf.readBlockPos()),
                 playerInventory.player.getUUID());
     }
 
-    public TerminalMenu(int containerId, Inventory playerInventory, TerminalBlockEntity be, UUID playerId) {
-        super(ModMenuTypes.TERMINAL_MENU.get(), containerId);
+    public CardLinkerMenu(int containerId, Inventory playerInventory, CardLinkerBlockEntity be, UUID playerId) {
+        super(ModMenuTypes.CARD_LINKER_MENU.get(), containerId);
         this.blockEntity = be;
         this.playerId = playerId;
 
@@ -44,14 +44,11 @@ public class TerminalMenu extends AbstractContainerMenu {
     }
 
     private void addPlayerInventory(Inventory inv) {
-        for (int row = 0; row < 3; row++) {
-            for (int col = 0; col < 9; col++) {
+        for (int row = 0; row < 3; row++)
+            for (int col = 0; col < 9; col++)
                 this.addSlot(new Slot(inv, col + row * 9 + 9, 8 + col * 18, 84 + row * 18));
-            }
-        }
-        for (int col = 0; col < 9; col++) {
+        for (int col = 0; col < 9; col++)
             this.addSlot(new Slot(inv, col, 8 + col * 18, 142));
-        }
     }
 
     @Override
@@ -66,9 +63,7 @@ public class TerminalMenu extends AbstractContainerMenu {
             } else {
                 if (slotStack.getItem() instanceof CardItem) {
                     if (!this.moveItemStackTo(slotStack, 0, 1, false)) return ItemStack.EMPTY;
-                } else {
-                    return ItemStack.EMPTY;
-                }
+                } else return ItemStack.EMPTY;
             }
             if (slotStack.isEmpty()) slot.set(ItemStack.EMPTY);
             else slot.setChanged();
@@ -80,8 +75,8 @@ public class TerminalMenu extends AbstractContainerMenu {
     public boolean stillValid(@NotNull Player player) {
         return blockEntity.getLevel() != null
                 && AbstractContainerMenu.stillValid(
-                net.minecraft.world.inventory.ContainerLevelAccess.create(
-                        blockEntity.getLevel(), blockEntity.getBlockPos()),
-                player, blockEntity.getBlockState().getBlock());
+                        net.minecraft.world.inventory.ContainerLevelAccess.create(
+                                blockEntity.getLevel(), blockEntity.getBlockPos()),
+                        player, blockEntity.getBlockState().getBlock());
     }
 }

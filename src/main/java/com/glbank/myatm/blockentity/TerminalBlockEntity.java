@@ -129,7 +129,7 @@ public class TerminalBlockEntity extends BlockEntity implements MenuProvider {
 
         CompoundTag tag = cardStack.getTag();
         if (tag == null || !tag.contains("CardNumber") || !tag.contains("CVV")) {
-            sendResponse(player, false, "Card has no data (use ATM first)");
+            sendResponse(player, false, "Card has no data (use Card Linker first)");
             return;
         }
 

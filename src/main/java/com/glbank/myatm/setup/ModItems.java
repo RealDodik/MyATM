@@ -16,8 +16,8 @@ public class ModItems {
     public static final RegistryObject<Item> CARD = ITEMS.register("card",
             () -> new CardItem(new Item.Properties().stacksTo(1)));
 
-    public static final RegistryObject<Item> ATM_ITEM = ITEMS.register("atm",
-            () -> new BlockItem(ModBlocks.ATM.get(), new Item.Properties()));
+    public static final RegistryObject<Item> CARD_LINKER_ITEM = ITEMS.register("card_linker",
+            () -> new BlockItem(ModBlocks.CARD_LINKER.get(), new Item.Properties()));
 
     public static final RegistryObject<Item> TERMINAL_ITEM = ITEMS.register("terminal",
             () -> new BlockItem(ModBlocks.TERMINAL.get(), new Item.Properties()));
